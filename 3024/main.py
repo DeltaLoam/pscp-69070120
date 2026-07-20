@@ -1,7 +1,10 @@
-"""korkortor"""
+"""คณะกรรมการการเลือกตั้ง"""
+sum_score = float(input())
+max_score = float(input())
 
-vote_sum = int(input())
-vote_high = int(input())
+min_score = max(0, sum_score - (2*max_score))
 
-vote_low = min(vote_sum, vote_high)
-print(vote_low)
+if max_score - min_score > 2:
+    print("Surprising")
+else:
+    print("Not surprising")
