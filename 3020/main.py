@@ -5,4 +5,17 @@ pro_cap = int(input())
 pro_price = int(input())
 buy = int(input())
 
-print(((buy // pro_cap) * pro_price) + ((buy - (buy // pro_cap)) * price))
+caps = 0
+cost = 0
+
+for _ in range(buy):
+    _ += 0
+    if 0 < pro_cap <= caps:
+        cost += pro_price
+        caps -= pro_cap
+    else:
+        cost += price
+
+    caps += 1
+
+print(cost)
