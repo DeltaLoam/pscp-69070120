@@ -1,69 +1,40 @@
-def parse_time(s):
-    """แปลง 'H.MM' -> นาทีรวม (int) หรือ None ถ้าไม่ถูกต้อง"""
-    if s is None:
-        return None
-    s = s.strip()
-    if s == "":
-        return None
+"""parking"""
 
-    if '.' not in s:
-        h_str, m_str = s, "0"
-    else:
-        parts = s.split('.')
-        if len(parts) != 2:
-            return None
-        h_str, m_str = parts
+def fee():
+    """calculator"""
+    h1, m1 = map(int, input().split("."))
+    h2, m2 = map(int, input().split("."))
 
-    if not h_str.lstrip('-').isdigit() or not m_str.isdigit():
-        return None
-
-    h = int(h_str)
-    m = int(m_str)
-
-    if h < 0 or h > 23:
-        return None
-    if m < 0 or m > 59:
-        return None
-
-    return h * 60 + m
-
-
-def calc_rate(hours):
-    rates = {1: 25, 2: 50, 3: 80, 4: 110, 5: 145, 6: 180}
-    if hours in rates:
-        return rates[hours]
-    elif 7 <= hours <= 24:
-        return 250
-    else:
-        return None
-
-
-def main():
-    t_in = input()
-    t_out = input()
-
-    entry = parse_time(t_in)
-    exit_ = parse_time(t_out)
-
-    if entry is None or exit_ is None:
+    if not (0 <= h1 <= 23 and 0 <= m1 <= 59):
         print("ERROR")
         return
 
-    duration = exit_ - entry
-    if duration < 0:
-        duration += 24 * 60  # ข้ามเที่ยงคืน
+    if not (0 <= h2 <= 23 and 0 <= m2 <= 59):
+        print("ERROR")
+        return
 
-    if duration <= 15:
+    t = (h2 * 60 + m2) - (h1 * 60 + m1)
+
+    if t < 0 or t > 1440:
+        print("ERROR")
+    elif t <= 15:
         print("FREE")
-        return
-
-    hours = (duration + 59) // 60  # ceil division
-    rate = calc_rate(hours)
-
-    if rate is None:
-        print("ERROR")
     else:
-        print(rate)
+        h = (t + 59) // 60
 
+        if h == 1:
+            print(25)
+        elif h == 2:
+            print(50)
+        elif h == 3:
+            print(80)
+        elif h == 4:
+            print(110)
+        elif h == 5:
+            print(145)
+        elif h == 6:
+            print(180)
+        else:
+            print(250)
 
-main()
+fee()
