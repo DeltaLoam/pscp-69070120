@@ -1,13 +1,15 @@
 """triangle"""
-def main():
+
+def triangle():
     """triangle"""
     n = int(input())
-    for i in range(n):
-        line = ""
-        for j in range(i + 1):
-            if not j or j == i or i == n - 1:
-                line += "0"
+
+    for row in range(n):
+        for col in range(row + 1):
+            if not col or row == n - 1 or row == col:
+                print(0, end="")
             else:
-                line += "1"
-        print(line)
-main()
+                print(1, end="")
+        print()
+
+triangle()
