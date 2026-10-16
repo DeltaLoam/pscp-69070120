@@ -1,17 +1,16 @@
-""" FourDirections """
+"""FourDirections"""
 
 
 def main():
     """FourDirections"""
-    arrows = {
-        "U": ["  *  ", " *** ", "* * *", "  *  ", "  *  "],
-        "D": ["  *  ", "  *  ", "* * *", " *** ", "  *  "],
-        "L": ["  *  ", " *   ", "*****", " *   ", "  *  "],
-        "R": ["  *  ", "   * ", "*****", "   * ", "  *  "],
-    }
     s = input().strip()
-    for r in range(5):
-        print(" ".join(arrows[c][r] for c in s))
-
+    mid1 = {"U": " ***  ", "D": "  *   ", "L": " *    ", "R": "   *  "}
+    mid2 = {"U": "* * * ", "D": "* * * ", "L": "***** ", "R": "***** "}
+    mid3 = {"U": "  *   ", "D": " ***  ", "L": " *    ", "R": "   *  "}
+    print("".join("  *   " for _ in s))
+    print("".join(mid1[c] for c in s))
+    print("".join(mid2[c] for c in s))
+    print("".join(mid3[c] for c in s))
+    print("".join("  *   " for _ in s[:-1]) + "  * ")
 
 main()
