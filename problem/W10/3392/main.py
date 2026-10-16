@@ -1,0 +1,22 @@
+""" Array ฮาเฮ """
+
+
+def main():
+    """Array ฮาเฮ"""
+    a = []
+    for i in range(3):
+        a.append(int(input()))
+        print("Input number", i + 1, "stored.")
+    while True:
+        c = int(input())
+        if not c:
+            break
+        if c == 1:
+            print("Original order:", *a)
+        elif c == 2:
+            print("Descending order:", *sorted(a, reverse=True))
+        elif c == 3:
+            print("Ascending order:", *sorted(a))
+
+
+main()
